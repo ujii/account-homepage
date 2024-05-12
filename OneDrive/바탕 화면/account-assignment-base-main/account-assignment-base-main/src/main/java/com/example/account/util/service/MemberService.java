@@ -21,7 +21,8 @@ public class MemberService {
     // 로그인 로직
     public ResponseEntity<CustomApiResponse<?>> login(UserLoginDto dto) {
 
-        // 존재하는 ID라는 가정하에
+        Optional<Member> findMember = memberRepository.findByUserId(dto.getUserId());
+
         // 옳은 비밀번호인가?
         if (dto.getPassword().equals(memberRepository.findByUserId(dto.getUserId()).get().getPassword())) {     // Yes -> 로그인 성공
             return ResponseEntity.status(HttpStatus.OK)
@@ -30,7 +31,6 @@ public class MemberService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(CustomApiResponse.createFailWithoutData(HttpStatus.BAD_REQUEST.value(), "비밀번호가 일치하지 않습니다."));
         }
-
     }
 
     // 회원가입 로직
