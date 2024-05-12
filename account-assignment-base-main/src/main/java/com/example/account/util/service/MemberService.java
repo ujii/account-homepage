@@ -59,5 +59,6 @@ public class MemberService {
 
     }
 
+
     // 회원탈퇴 로직
 }
