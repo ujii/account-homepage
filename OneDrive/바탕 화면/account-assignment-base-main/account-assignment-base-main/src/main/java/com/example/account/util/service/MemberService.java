@@ -23,7 +23,7 @@ public class MemberService {
 
         // 존재하는 ID라는 가정하에
         // 옳은 비밀번호인가?
-        if (dto.getPassword().equals(memberRepository.findByUserId(dto.getPassword()))) {     // Yes -> 로그인 성공
+        if (dto.getPassword().equals(memberRepository.findByUserId(dto.getUserId()).get().getPassword())) {     // Yes -> 로그인 성공
             return ResponseEntity.status(HttpStatus.OK)
                     .body(CustomApiResponse.createSuccess(HttpStatus.OK.value(), null, "로그인에 성공했습니다."));
         }else {     // No -> 비밀번호 오류, 로그인 실패
