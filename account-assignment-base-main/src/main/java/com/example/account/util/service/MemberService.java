@@ -57,7 +57,6 @@ public class MemberService {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CustomApiResponse.createSuccess(HttpStatus.OK.value(), null, "회원가입에 성공했습니다."));
 
-
     }
 
     // 회원탈퇴 로직
