@@ -1,8 +1,8 @@
 package com.example.account.util.service;
 
 import com.example.account.util.domain.Member;
-import com.example.account.util.dto.UserLoginDto;
-import com.example.account.util.dto.UserSignupDto;
+import com.example.account.util.dto.MemberLoginDto;
+import com.example.account.util.dto.MemberSignupDto;
 import com.example.account.util.repository.MemberRepository;
 import com.example.account.util.response.CustomApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +19,12 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     // 로그인 로직
-    public ResponseEntity<CustomApiResponse<?>> login(UserLoginDto dto) {
+    public ResponseEntity<CustomApiResponse<?>> login(MemberLoginDto dto) {
 
         Optional<Member> findMember = memberRepository.findByUserId(dto.getUserId());
 
         // 옳은 비밀번호인가?
-        if (dto.getPassword().equals(memberRepository.findByUserId(dto.getUserId()).get().getPassword())) {     // Yes -> 로그인 성공
+        if (dto.getPassword().equals(findMember.get().getPassword())) {     // Yes -> 로그인 성공
             return ResponseEntity.status(HttpStatus.OK)
                     .body(CustomApiResponse.createSuccess(HttpStatus.OK.value(), null, "로그인에 성공했습니다."));
         }else {     // No -> 비밀번호 오류, 로그인 실패
@@ -34,7 +34,7 @@ public class MemberService {
     }
 
     // 회원가입 로직
-    public ResponseEntity<CustomApiResponse<?>> signup(UserSignupDto dto) {
+    public ResponseEntity<CustomApiResponse<?>> signup(MemberSignupDto dto) {
         Optional<Member> findMember = memberRepository.findByUserId(dto.getUserId());
 
         // 존재하는 ID라면 가입 불가
@@ -61,4 +61,14 @@ public class MemberService {
 
 
     // 회원탈퇴 로직
+    public ResponseEntity<CustomApiResponse<?>> withdraw(String userId) {
+        // 현재 로그인한 계정의 userId와 같은 userId를 가진 데이터를 찾는다.
+        Optional<Member> findMember = memberRepository.findByUserId(userId);
+
+        // 데이터를 삭제한다.
+        memberRepository.delete(findMember.get());
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CustomApiResponse.createSuccess(HttpStatus.OK.value(), null,"회원탈퇴에 성공했습니다."));
+    }
 }

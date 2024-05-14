@@ -10,13 +10,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserSignupDto {
-    @NotBlank
+public class MemberSignupDto {
+    @NotBlank(message = "이메일 주소를 입력해주세요.")
     private String email;
-    @NotBlank
+    @NotBlank(message = "휴대폰 번호를 입력해주세요.")
     private String phone;
-    @NotBlank
+    @NotBlank(message = "ID를 입력해주세요.")
     private String userId;
-    @NotBlank
+    @NotBlank(message = "비밀번호를 입력해주세요.")
     private String password;
 }
