@@ -15,7 +15,7 @@ daccount-assignment-base-main/src/main/java/com/example/account/util/controller/
 \account-assignment-base-main/src/main/java/com/example/account/util/dto/MemberSignupDto.java,c\e\cee0cdcbde63804140c19dd5bed3f4b38381b089
 Ž
 ^account-assignment-base-main/src/main/java/com/example/account/util/service/MemberService.java,f\2\f22816e8438b1b24b1f461d467980e1a0a913093
-Ž
-^account-assignment-base-main/src/main/java/com/example/account/util/dto/MemberWithdrawDto.java,8\7\87260b1a321f368787df0dcedb805d7b4b26d92d
 ™
 iaccount-assignment-base-main/src/main/java/com/example/account/util/controller/CustomErrorController.java,2\c\2cf5625fe17bae691e08f9ffcd9a1eb00548f4ed
+Š
+Zaccount-assignment-base-main/src/main/java/com/example/account/util/entity/BaseEntity.java,5\6\560a82d248d8b322dd52b7a069896fad76733ff1
