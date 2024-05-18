@@ -1,4 +1,4 @@
-package com.example.account.util.dto;
+package com.example.account.accounts.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

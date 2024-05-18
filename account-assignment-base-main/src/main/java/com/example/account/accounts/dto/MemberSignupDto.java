@@ -1,4 +1,4 @@
-package com.example.account.util.dto;
+package com.example.account.accounts.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,7 +18,7 @@ public class MemberSignupDto {
     private String email;
 
     @NotBlank(message = "전화번호를 입력해주세요.")
-    @Pattern(regexp = "^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$", message = "전화번호 형식을 맞춰주세요.")
+    @Pattern(regexp = "^010\\d{8}$", message = "전화번호 형식을 맞춰주세요.")
     private String phone;
 
     @NotBlank(message = "ID를 입력해주세요.")

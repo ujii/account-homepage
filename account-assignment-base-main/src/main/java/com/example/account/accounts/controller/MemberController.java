@@ -1,9 +1,9 @@
-package com.example.account.util.controller;
+package com.example.account.accounts.controller;
 
-import com.example.account.util.dto.MemberLoginDto;
-import com.example.account.util.dto.MemberSignupDto;
+import com.example.account.accounts.dto.MemberLoginDto;
+import com.example.account.accounts.dto.MemberSignupDto;
 import com.example.account.util.response.CustomApiResponse;
-import com.example.account.util.service.MemberService;
+import com.example.account.accounts.service.MemberServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberService memberService;
+    private final MemberServiceImpl memberService;
 
     @PostMapping("/login")
     public ResponseEntity<CustomApiResponse<?>> login(@RequestBody MemberLoginDto dto) {
